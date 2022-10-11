@@ -1,0 +1,22 @@
+1. Coreference Resolution: The task of finding all expressions referring to the same entity in a text.
+
+2. Named Entity Recognition: Locate and classify named entities from unstructured text into pre-defined categories. (Try making custom AI models - in your domain of data)
+
+3. Solving disambiguation (of same entity being represented as separate nodes e.g. Elon Musk, Mr. Musk, Elon): Entity Linking
+
+4. Named Entity Linking: Recognize all the entities and then map those to a target knowledge base.
+5. Co-occurence graphs: collective interconnection of terms based on their paired presence within a specified unit of text.
+6. Relationship Extraction: extracting semantic relationships between a pair of entities (semantic categories) from a text
+
+    Two methods to do so:-
+    
+    1. Rule-based relationship extraction via grammatical dependencies
+    - ignore past/present/future tense of verbs, or words of similar semantic value while making semantic categories
+    -lemmatize words before categorization
+    
+    2. NLP modeling
+    - training data
+    - Datasets - TACRED, Wiki80
+    
+    
+Notes Source -> https://www.youtube.com/watch?v=1sRgsEKlUr0
