@@ -1,0 +1,2 @@
+Sample JSON file which contains asset description:
+https://gist.github.com/kamilwaheed/b324ed9637c7a6599650
