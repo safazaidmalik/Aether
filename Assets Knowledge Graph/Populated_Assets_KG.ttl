@@ -1,0 +1,171 @@
+@prefix : <http://www.semanticweb.org/szm/megascan-assets-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/szm/megascan-assets-ontology> a owl:Ontology .
+
+:Age a owl:Class ;
+    rdfs:subClassOf :Property .
+
+:Asset_Mossy_Mounds a :Asset ;
+    :assetBelongsToCategory :Category_3d,
+        :Category_ground,
+        :Category_moss ;
+    :assetHasEnvironment :Environment_1 ;
+    :assetID "tk4tcfhfa" ;
+    :assetName "Mossy Mounds" ;
+    :assetTag "archviz",
+        "dirt",
+        "embankment",
+        "forest",
+        "ground",
+        "lumps",
+        "moss",
+        "mossy",
+        "mound",
+        "nordic",
+        "rough",
+        "sweden",
+        "terrain",
+        "tyresta" .
+
+:Color a owl:Class ;
+    rdfs:subClassOf :Property .
+
+:MainLevelCategory a owl:Class ;
+    rdfs:subClassOf :Category .
+
+:Orientation a owl:Class ;
+    rdfs:subClassOf :Property .
+
+:Property_Age a :Property .
+
+:Property_Color a :Property .
+
+:Property_Orientation a :Property .
+
+:Property_Size a :Property .
+
+:Size a owl:Class ;
+    rdfs:subClassOf :Property .
+
+:SubLevelCategory a owl:Class ;
+    rdfs:subClassOf :Category .
+
+:TopLevelCategory a owl:Class ;
+    rdfs:subClassOf :Category .
+
+:assetAgeProperty a owl:DatatypeProperty ;
+    rdfs:comment """(check if this is a valid property)
+could have values: baby, young, old, etc..""" ;
+    rdfs:domain :Asset ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:assetAverageColor a owl:DatatypeProperty ;
+    rdfs:comment "Asset Average Color must be a valid hex code" ;
+    rdfs:domain :Asset ;
+    rdfs:range xsd:string .
+
+:assetBelongsToCategory a owl:ObjectProperty ;
+    rdfs:domain :Asset ;
+    rdfs:range :Category .
+
+:assetColorProperty a owl:DatatypeProperty ;
+    rdfs:domain :Asset ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:assetHasEnvironment a owl:ObjectProperty ;
+    rdfs:domain :Asset ;
+    rdfs:range :Environment .
+
+:assetHasProperty a owl:ObjectProperty ;
+    rdfs:domain :Asset ;
+    rdfs:range :Property .
+
+:assetID a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:comment "Asstet ID should be unique + alphanumeric" ;
+    rdfs:domain :Asset ;
+    rdfs:range xsd:string .
+
+:assetName a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain :Asset ;
+    rdfs:range xsd:string .
+
+:assetOrientationProperty a owl:DatatypeProperty ;
+    rdfs:domain :Asset ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:assetSizeProperty a owl:DatatypeProperty ;
+    rdfs:comment """Asset size can be large, small, tiny, ...
+Fixed sizes (to be searched)""" ;
+    rdfs:domain :Asset ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:assetTag a owl:DatatypeProperty ;
+    rdfs:domain :Asset ;
+    rdfs:range xsd:string .
+
+rdfs:label a owl:DatatypeProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Biome :Category :Region ) ] ;
+    rdfs:range xsd:string .
+
+:Biome_undefined rdfs:label "undefined" .
+
+:Category_3d a :Category ;
+    rdfs:label "3d" .
+
+:Category_ground a :Category ;
+    rdfs:label "ground" .
+
+:Category_moss a :Category ;
+    rdfs:label "moss" .
+
+:Environment_1 :environmentHasBiome :Biome_undefined ;
+    :environmentHasRegion :Region_Europe .
+
+:Region_Europe rdfs:label "Europe" .
+
+:environmentHasBiome a owl:ObjectProperty ;
+    rdfs:domain :Environment ;
+    rdfs:range :Biome ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+:environmentHasRegion a owl:ObjectProperty ;
+    rdfs:domain :Environment ;
+    rdfs:range :Region .
+
+:Environment a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( [ a owl:Class ;
+                        owl:intersectionOf ( [ a owl:Restriction ;
+                                    owl:onProperty :environmentHasBiome ;
+                                    owl:someValuesFrom :Biome ] [ a owl:Restriction ;
+                                    owl:onProperty :environmentHasRegion ;
+                                    owl:someValuesFrom :Region ] ) ] [ a owl:Restriction ;
+                        owl:onProperty :environmentHasBiome ;
+                        owl:someValuesFrom :Biome ] [ a owl:Restriction ;
+                        owl:onProperty :environmentHasRegion ;
+                        owl:someValuesFrom :Region ] ) ] .
+
+:Biome a owl:Class .
+
+:Region a owl:Class .
+
+:Category a owl:Class .
+
+:Property a owl:Class .
+
+:Asset a owl:Class .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :Asset :Biome :Category :Environment :Property :Region ) .
+
