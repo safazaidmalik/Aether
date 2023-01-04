@@ -12,23 +12,23 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#environmentHasBiome
-:environmentHasBiome rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf owl:topObjectProperty ;
-                     rdfs:domain :Environment ;
-                     rdfs:range :Biome .
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetEnvironmentBiome
+:assetEnvironmentBiome rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Asset ;
+                       rdfs:range :Biome .
 
 
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#environmentHasRegion
-:environmentHasRegion rdf:type owl:ObjectProperty ;
-                      rdfs:domain :Environment ;
-                      rdfs:range :Region .
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetEnvironmentRegion
+:assetEnvironmentRegion rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Asset ;
+                        rdfs:range :Region .
 
 
-###  https://dbpedia.org/ontology/location
-<https://dbpedia.org/ontology/location> rdf:type owl:ObjectProperty ;
-                                        rdfs:domain :Environment ;
-                                        rdfs:range :Region .
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetSize
+:assetSize rdf:type owl:ObjectProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :Asset ;
+           rdfs:range :AssetSize .
 
 
 #################################################################
@@ -37,58 +37,36 @@
 
 ###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetAge
 :assetAge rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf :assetProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Asset ;
-          rdfs:comment """(check if this is a valid property)
-could have values: baby, young, old, etc..""" .
+          rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetAverageColor
-:assetAverageColor rdf:type owl:DatatypeProperty ;
-                   rdfs:domain :Asset ;
-                   rdfs:range xsd:string ;
-                   rdfs:comment "Asset Average Color must be a valid hex code" .
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetAvgColor
+:assetAvgColor rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Asset ;
+               rdfs:range xsd:string ;
+               rdfs:comment "will be a valid hex code" .
 
 
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetColor
-:assetColor rdf:type owl:DatatypeProperty ;
-            rdfs:subPropertyOf :assetProperty ;
-            rdfs:domain :Asset ;
-            rdfs:range xsd:string .
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetCategory
+:assetCategory rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Asset ;
+               rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetID
-:assetID rdf:type owl:DatatypeProperty ;
+:assetID rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
          rdfs:domain :Asset ;
-         rdfs:range xsd:string ;
-         rdfs:comment "Asstet ID should be unique + alphanumeric" .
+         rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetName
-:assetName rdf:type owl:DatatypeProperty ;
+:assetName rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
            rdfs:domain :Asset ;
            rdfs:range xsd:string .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetOrientation
-:assetOrientation rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf :assetProperty ;
-                  rdfs:domain :Asset .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetProperty
-:assetProperty rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:comment "includes asset properties under \"properties\" key in asset .json file" .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetSize
-:assetSize rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf :assetProperty ;
-           rdfs:domain :Asset ;
-           rdfs:range xsd:string ;
-           rdfs:comment """Asset size can be large, small, tiny, ...
-Fixed sizes (to be searched)""" .
 
 
 ###  http://www.semanticweb.org/szm/megascan-assets-ontology#assetTag
@@ -97,93 +75,105 @@ Fixed sizes (to be searched)""" .
           rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#categoryLabel
-:categoryLabel rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Category ;
-               rdfs:range xsd:string .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#label
-rdfs:label rdf:type owl:DatatypeProperty ;
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#biomeName
+:biomeName rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :Biome ;
            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#regionName
+:regionName rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :Region ;
+            rdfs:range xsd:string .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#Age
-:Age rdf:type owl:Class ;
-     rdfs:subClassOf :Property .
-
-
 ###  http://www.semanticweb.org/szm/megascan-assets-ontology#Asset
-:Asset rdf:type owl:Class .
+:Asset rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :assetCategory ;
+                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                    owl:onDataRange xsd:string
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :assetTag ;
+                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                    owl:onDataRange xsd:string
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :assetID ;
+                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                    owl:onDataRange xsd:string
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :assetName ;
+                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                    owl:onDataRange xsd:string
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#AssetSize
+:AssetSize rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Class ;
+                                 owl:oneOf ( :extra_large
+                                             :large
+                                             :medium
+                                             :small
+                                             :tiny
+                                           )
+                               ] .
 
 
 ###  http://www.semanticweb.org/szm/megascan-assets-ontology#Biome
-:Biome rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#Category
-:Category rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#Color
-:Color rdf:type owl:Class ;
-       rdfs:subClassOf :Property .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#Environment
-:Environment rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#MainLevelCategory
-:MainLevelCategory rdf:type owl:Class ;
-                   rdfs:subClassOf :Category .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#Orientation
-:Orientation rdf:type owl:Class ;
-             rdfs:subClassOf :Property .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#Property
-:Property rdf:type owl:Class .
+:Biome rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :biomeName ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ;
+       rdfs:comment "found in data[\"environment\"][\"region\"] in asset.json file" .
 
 
 ###  http://www.semanticweb.org/szm/megascan-assets-ontology#Region
-:Region rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#Size
-:Size rdf:type owl:Class ;
-      rdfs:subClassOf :Property .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#SubLevelCategory
-:SubLevelCategory rdf:type owl:Class ;
-                  rdfs:subClassOf :Category .
-
-
-###  http://www.semanticweb.org/szm/megascan-assets-ontology#TopLevelCategory
-:TopLevelCategory rdf:type owl:Class ;
-                  rdfs:subClassOf :Category .
+:Region rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :regionName ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:string
+                            ] ;
+        rdfs:comment "data[\"environment\"][\"biome\"]" .
 
 
 #################################################################
-#    General axioms
+#    Individuals
 #################################################################
 
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Asset
-                :Biome
-                :Category
-                :Environment
-                :Property
-                :Region
-              )
-] .
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#extra_large
+:extra_large rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#large
+:large rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#medium
+:medium rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#small
+:small rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/szm/megascan-assets-ontology#tiny
+:tiny rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
