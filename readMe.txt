@@ -23,11 +23,13 @@ Before starting the application, make sure that the following installations have
   pip install networkx
   pip install matplotlib
   
-Hardware Requirements:
-  1. GPU (at least)
-  2. Microphone
-  3. Keyboard
-
+Recommended Hardware:
+  1. Processor:   Quad-core Intel or AMD, 2.5 GHz or faster
+  2. Memory:      32 GB RAM or higher
+  3. Video Card:  NVIDIA GeForce 960 GTX or Higher with latest NVIDIA binary drivers
+  4. Video RAM:   8 GB or more
+  5. Microphone
+ 
  
 For using Unreal Engine 5 on Linux:
   1. Create an account on EpicGames.
@@ -42,7 +44,7 @@ Running the Application
   3. Launch the Unreal Engine project (Project1) from Rider.
   4. Run complete_py_pipeline.py with the terminal command: python complete_py_pipeline.py
   5. Speak into your microphone to give an input.
-  6. After complete_py_pipeline.py has terminated, Run the project from Unreal Editor to spawn the assets.
+  6. After complete_py_pipeline.py has terminated, Run the project game from Unreal Editor, and press 'm' to spawn the assets.
   
   
 
