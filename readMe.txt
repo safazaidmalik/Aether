@@ -1,14 +1,13 @@
-Near-Real_Time Data Warehouse Prototype - Semester 7 Practical Project
+AETHER: Desktop Application for the generation of realistic 3D outdoor virtual scenes using Natural Language Processing
+Final Year Project
 
 This is a Java based program which provides the implementation for Mesh Join to be used in a near realtime data warehouse. 
-  Submitted to: Dr. Muhammad Asif Naeem
-  Submitted by: Aamna Kamran
-  Roll Number: 19I-0454
-  Assignment Name: Practical Project: Building and Analysing a Near-Real-Time Data Warehouse
-  Prototype for METRO Shopping Store in Pakistan
-  Submission Date: Friday, 2nd December, 2022
-
-*All analytical anaylsis and queries related to the data warehouse have been provided in a separate report.
+  Submitted to: FYP Committee FAST Islamabad
+  Submitted by: Aamna Kamran, Momin Tariq and Safa Zaid Malik
+  Roll Number: 19I-0454, 19I-0437 and 19I-0555
+  Project Type: Development
+  Group Number: F22-062
+  Submission Date: Sunday, 9th January, 2023
 
 Required Java Imports (already included in the project)
   import java.sql.Connection;
