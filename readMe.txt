@@ -9,33 +9,42 @@ This is a Java based program which provides the implementation for Mesh Join to 
   Group Number: F22-062
   Submission Date: Sunday, 9th January, 2023
 
-Required Java Imports (already included in the project)
-  import java.sql.Connection;
-  import java.sql.PreparedStatement;
-  import java.sql.ResultSet;
-  import java.sql.Statement;
-  import java.util.*;
-  import java.util.Scanner;
-  import java.util.Calendar;
-  import java.text.ParseException;
+Installation Requirements:
+Before starting the application, make sure that the following installations have been made:
 
-For using MySQL as the database:
-  1. create a table on your local host for storing the master data
-    a) create transactions, customers, and products tables and populate them (or run the provided script)
-  2. create another table on your local host for you data warehouse
-    b) run script to create the dimension tables and the fact table
-  3. add the .jar file present in the project's lib folder into the project structure
+  pip install rdflib
+  pip install SPARQLWrapper
+  pip install owlready2
+  pip install -U sentence-transformers
+  pip install SpeechRecognition
+  pip install spacy
+  python -m spacy download en
+  pip install SceneGraphParser
+  pip install networkx
+  pip install matplotlib
+  
+Hardware Requirements:
+  1. GPU (at least)
+  2. Microphone
+  3. Keyboard
+
+ 
+For using Unreal Engine 5 on Linux:
+  1. Create an account on EpicGames.
+  2. Clone Unreal Engine repository from https://github.com/EpicGames to install Unreal Engine.
+  3. Download and install JetBrains Rider.
+  4. (Connecting Unreal and Rider)
+  
   
 Running the Application
-  1. build the program and then go to main and run the program
-  2. you will be required to enter your database credentials (username, password wtc)
-*no further input is required on the user's part
+  1. Place Populated_Assets_KG.ttl in <>
+  2. Place complete_py_pipeline.py in <>
+  3. Launch the Unreal Engine project (Project1) from Rider.
+  4. Run complete_py_pipeline.py with the terminal command: python complete_py_pipeline.py
+  5. Speak into your microphone to give an input.
+  6. After complete_py_pipeline.py has terminated, Run the project from Unreal Editor to spawn the assets.
+  
+  
 
 Please Note
-  For execution of the program, a Java Runtime must be installed on the local operating system.
-  
-Troubleshooting
-  In case you are not able to connect to your database check if your local host is set on port 3306; if not then go to MyJDBC class in the project 
-  and change all occurences of the string: "jdbc:mysql://localhost:3306/" to "jdbc:mysql://localhost:#port number#/" where #port number# 
-  will be replaced by whatever port your local host is using.
-
+  For execution of the program, pip and Python must be installed and version should be up to date.
