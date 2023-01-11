@@ -1,7 +1,6 @@
 AETHER: Desktop Application for the generation of realistic 3D outdoor virtual scenes using Natural Language Processing
 Final Year Project
-
-This is a Java based program which provides the implementation for Mesh Join to be used in a near realtime data warehouse. 
+ 
   Submitted to: FYP Committee FAST Islamabad
   Submitted by: Aamna Kamran, Momin Tariq and Safa Zaid Malik
   Roll Number: 19I-0454, 19I-0437 and 19I-0555
