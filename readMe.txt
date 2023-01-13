@@ -34,12 +34,14 @@ For using Unreal Engine 5 on Linux:
   1. Create an account on EpicGames.
   2. Clone Unreal Engine repository from https://github.com/EpicGames to install Unreal Engine.
   3. Download and install JetBrains Rider.
-  4. (Connecting Unreal and Rider)
+  4. Install Unreal Engine Link PlugIn on rider
+  5. Create a new c++ project in UnrealEngine and Open its script in JetBrains Rider
+  6. Now you can edit and compile c++ scipts fro rider
   
   
 Running the Application
-  1. Place Populated_Assets_KG.ttl in <>
-  2. Place complete_py_pipeline.py in <>
+  1. Place Populated_Assets_KG.ttl in the main game folder
+  2. Place complete_py_pipeline.py in the same folder
   3. Launch the Unreal Engine project (Project1) from Rider.
   4. Run complete_py_pipeline.py with the terminal command: python complete_py_pipeline.py
   5. Speak into your microphone to give an input.
