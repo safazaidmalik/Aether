@@ -4,19 +4,29 @@ on:
   push: 
     branches: safa
   pull_request:
-    branches: [main, momin, safa]
-
+    branches: safa
   workflow_dispatch:
 
 jobs:
-
   build-container:
-
     runs-on: ubuntu-latest
-
     steps:
 
     - uses: actions/checkout@v3
 
     - name: Build the docker image
       run: docker build . --file Dockerfile --tag build-my-dockerfile:$(date +%s)
+    
+    - name: Set up Minikube
+      uses: azure/setup-minikube@v1
+
+    - name: Start Minikube
+      run: minikube start
+
+    - name: Load Docker image into Minikube
+      run: minikube image load build-my-dockerfile:$(date +%s)
+      
+    - name: Apply deployment and service yml files
+      run: |
+          kubectl apply -f deployment.yml
+          kubectl apply -f service.yml
