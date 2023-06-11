@@ -2,9 +2,9 @@ name: docker-build-workflow
 
 on:
   push: 
-    branches: momin
+    branches: safa
   pull_request:
-    branches: momin
+    branches: [main, momin, safa]
 
   workflow_dispatch:
 
