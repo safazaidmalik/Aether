@@ -3,6 +3,7 @@ FROM python:3.8.7-slim
 
 COPY requirements.txt /app/
 COPY aether_pipeline.py /app/
+COPY Populated_Assets_KG.ttl
 WORKDIR /app/
 
 RUN pip install -r requirements.txt
