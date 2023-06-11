@@ -48,7 +48,7 @@ import sng_parser
 
 # populated_kg_path = "/home/aim2/Documents/Populated_Assets_KG.ttl"
 populated_kg_path = (
-    "/home/szm/Documents/Uni_Stuff/Sem8/MLOps/Project/Populated_Assets_KG.ttl"
+    "Populated_Assets_KG.ttl"
 )
 # Update KG of assets
 #################################################
