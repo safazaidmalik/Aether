@@ -2,9 +2,9 @@ name: docker-build-workflow
 
 on:
   push: 
-    branches: none #[ momin ] 
+    branches: momin
   pull_request:
-    branches: none #[ momin ]
+    branches: momin
 
   workflow_dispatch:
 
