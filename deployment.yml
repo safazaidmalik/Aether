@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: aether-app-test
-          image: build-my-dockerfile:{{TIMESTAMP}}
+          image: build-my-dockerfile:${{env.TIMESTAMP}}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
