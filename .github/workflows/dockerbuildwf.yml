@@ -32,8 +32,8 @@ jobs:
 #     - name: Start Minikube
 #       run: minikube start --wait       
        
-#     - name: Interact with the cluster
-#       run: kubectl get nodes
+    - name: Interact with the cluster
+      run: kubectl get nodes
 
 #     - name: Load Docker image into Minikube
 #       run: minikube image load build-my-dockerfile:${{env.TIMESTAMP}}
