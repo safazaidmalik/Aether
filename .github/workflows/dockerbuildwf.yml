@@ -29,14 +29,14 @@ jobs:
        kubernetes version: 'v1.25.4'
        github token: ${{ secrets.GITHUB_TOKEN }}
        
-    - name: Start Minikube
-      run: minikube start --wait       
+#     - name: Start Minikube
+#       run: minikube start --wait       
        
-    - name: Interact with the cluster
-      run: kubectl get nodes
+#     - name: Interact with the cluster
+#       run: kubectl get nodes
 
-    - name: Load Docker image into Minikube
-      run: minikube image load build-my-dockerfile:${{env.TIMESTAMP}}
+#     - name: Load Docker image into Minikube
+#       run: minikube image load build-my-dockerfile:${{env.TIMESTAMP}}
       
     - name: Apply deployment and service yml files
       run: |
