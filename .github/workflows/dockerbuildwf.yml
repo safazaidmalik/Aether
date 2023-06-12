@@ -13,9 +13,11 @@ jobs:
     steps:
 
     - uses: actions/checkout@v3
-
+    - name: Set env variable
+      run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
+      
     - name: Build the docker image
-      run: docker build . --file Dockerfile --tag build-my-dockerfile:$(date +%s)
+      run: docker build . --file Dockerfile --tag build-my-dockerfile:${{env.TIMESTAMP}}
     
     - name: Checkout
       uses: actions/checkout@v3
@@ -31,10 +33,10 @@ jobs:
       run: kubectl get nodes
 
     - name: Start Minikube
-      run: minikube start
+      run: minikube start --wait
 
     - name: Load Docker image into Minikube
-      run: minikube image load build-my-dockerfile:$(date +%s)
+      run: minikube image load build-my-dockerfile:${{env.TIMESTAMP}}
       
     - name: Apply deployment and service yml files
       run: |
